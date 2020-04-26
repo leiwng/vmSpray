@@ -1,0 +1,11 @@
+# control Host info
+ctlDir: "~/leiw/labTab/vmSpray/"
+ctlInventoryDirName: "inventory"
+ctlTemplateDirName: "template"
+ctlRepositoryDirName: "repository"
+
+# vm machine info
+vmBox: "ubuntu/xenial64"
+vmUrl: "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cloud-images/xenial/current/xenial-server-cloudimg-amd64-vagrant.box"
+vmSyncDirOnHost: "./sync_dir"
+vmSyncDirOnGuest: "/vagrant_sync_dir"

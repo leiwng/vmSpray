@@ -1,0 +1,19 @@
+---
+  # using vagrant to deploy VirtualBox vm on physical machine
+
+# copy Vagrantfile
+- hosts: vm_hosts
+  remote_user: {{ hostUser }}
+  vars_files:
+    - vars.yml
+  tasks:
+  - name: put Vagrantfile to target machine with target dir
+    template:
+      src: "./template/Vagrantfile.j2.rb"
+      dest: "{{ vmRootDir }}/{{ vmDirName }}"
+      owner: "{{ hostUser }}"
+      mode: u=rw,g=r,o=r
+  # - name: vagrant up
+  #   shell: "vagrant up"
+  #   args:
+  #     chdir: "{{ vmRootDir }}/{{ vmDirName }}"
