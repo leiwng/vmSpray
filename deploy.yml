@@ -3,7 +3,7 @@
 
 # copy Vagrantfile
 - hosts: vm_hosts
-  remote_user: {{ hostUser }}
+  remote_user: "{{ hostUser }}"
   vars_files:
     - vars.yml
   tasks:
