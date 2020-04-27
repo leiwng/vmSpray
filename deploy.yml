@@ -18,7 +18,7 @@
       dest: "{{ vmRootDir }}/{{ vmDirName }}"
       owner: "{{ hostUser }}"
       mode: u=rw,g=r,o=r
-  # - name: vagrant up
-  #   shell: "vagrant up"
-  #   args:
-  #     chdir: "{{ vmRootDir }}/{{ vmDirName }}"
+  - name: vagrant up
+    shell: "vagrant up"
+    args:
+      chdir: "{{ vmRootDir }}/{{ vmDirName }}"
