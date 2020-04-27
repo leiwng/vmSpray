@@ -9,7 +9,7 @@
   tasks:
   - name: create dest dir
     file:
-      path: "{{ vmRootDir }}/{{ vmDirName }}"
+      path: "{{ vmRootDir }}/{{ vmDirName }}/{{ vmSyncDirOnHost }}"
       state: directory
       mode: "0775"
   - name: put Vagrantfile to target machine with target dir
