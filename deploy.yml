@@ -15,7 +15,7 @@
   - name: put Vagrantfile to target machine with target dir
     template:
       src: "./template/Vagrantfile.j2.rb"
-      dest: "{{ vmRootDir }}/{{ vmDirName }}"
+      dest: "{{ vmRootDir }}/{{ vmDirName }}/Vagrantfile"
       owner: "{{ hostUser }}"
       mode: u=rw,g=r,o=r
   - name: vagrant up
