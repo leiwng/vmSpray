@@ -1,17 +1,17 @@
 Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |v|
-    v.name = {{ vmName }}
+    v.name = "{{ vmName }}"
     v.memory = {{ vmMem }}
     v.cpus = {{ vmCpu }}
   end
 
   config.vm.define :master do |master|
-    master.vm.box = {{ vmBox }}
-    master.vm.box_url = {{ vmUrl }}
-    master.vm.hostname = {{ vmHostname }}
-    master.vm.network "public_network", ip: {{ vmPubIP }}
-    master.vm.synced_folder {{ vmSyncDirOnHost }}, {{ vmSyncDirOnGuest }}
+    master.vm.box = "{{ vmBox }}"
+    master.vm.box_url = "{{ vmUrl }}"
+    master.vm.hostname = "{{ vmHostname }}"
+    master.vm.network "public_network", ip: "{{ vmPubIP }}"
+    master.vm.synced_folder "{{ vmSyncDirOnHost }}", "{{ vmSyncDirOnGuest }}"
     master.vm.provision "shell", inline: $setBaseEnv
   end
 
