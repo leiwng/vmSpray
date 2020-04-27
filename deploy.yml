@@ -7,6 +7,11 @@
   vars_files:
     - vars.yml
   tasks:
+  - name: create dest dir
+    file:
+      path: "{{ vmRootDir }}/{{ vmDirName }}"
+      state: directory
+      mode: "0775"
   - name: put Vagrantfile to target machine with target dir
     template:
       src: "./template/Vagrantfile.j2.rb"
