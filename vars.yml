@@ -3,6 +3,7 @@ ctlDir: "~/leiw/labTab/vmSpray/"
 ctlInventoryDirName: "inventory"
 ctlTemplateDirName: "template"
 ctlRepositoryDirName: "repository"
+ctlSSHKeyName: "server-20_id_rsa.pub"
 
 # vm machine info
 vmBox: "ubuntu/xenial64"

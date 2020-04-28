@@ -18,6 +18,11 @@
       dest: "{{ vmRootDir }}/{{ vmDirName }}/Vagrantfile"
       owner: "{{ hostUser }}"
       mode: u=rw,g=r,o=r
+  - name: put id_rsa.pub to sync dir
+    copy:
+      src: "~/.ssh/id_rsa.pub"
+      dest: "{{ vmRootDir }}/{{ vmDirName }}/{{ vmSyncDirOnHost }}/{{ ctlSSHKeyName }}"
+      mode: u+rw,g+r,o+r
   - name: vagrant up
     shell: "vagrant up"
     args:
