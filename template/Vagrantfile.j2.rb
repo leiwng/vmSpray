@@ -19,8 +19,9 @@ end
 
 $setBaseEnv = <<-SCRIPT
 
-sudo setenforce 0
-sudo sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+# the original box do not have SELinux
+# sudo setenforce 0
+# sudo sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 
 sudo systemctl stop firewalld & systemctl disable firewalld
 sudo modprobe br_netfilter
