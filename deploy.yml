@@ -1,5 +1,5 @@
 ---
-  # using vagrant to deploy VirtualBox vm on physical machine
+# using vagrant to deploy VirtualBox vm on physical machine
 
 # copy Vagrantfile
 - hosts: vm_hosts
