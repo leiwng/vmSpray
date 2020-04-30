@@ -10,9 +10,10 @@ Vagrant.configure("2") do |config|
     master.vm.box = "{{ vmBox }}"
     master.vm.box_url = "{{ vmUrl }}"
     master.vm.hostname = "{{ vmHostname }}"
-    # to fix ping (DUP!) issue on 77 host, make the vm ip on 77 DHCP getted
-    # master.vm.network "public_network", ip: "{{ vmPubIP }}", bridge: "{{ vmBridge }}"
-    master.vm.network "public_network", bridge: "{{ vmBridge }}", use_dhcp_assigned_default_route: true
+    # assign fixed ip adddr
+    master.vm.network "public_network", ip: "{{ vmPubIP }}", bridge: "{{ vmBridge }}"
+    # using dhcp to assign ip addr
+    #master.vm.network "public_network", bridge: "{{ vmBridge }}", use_dhcp_assigned_default_route: true
     master.vm.synced_folder "{{ vmSyncDirOnHost }}", "{{ vmSyncDirOnGuest }}"
     master.vm.provision "shell", inline: $setBaseEnv
   end
@@ -26,8 +27,11 @@ $setBaseEnv = <<-SCRIPT
 # sudo sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
 
 # stop and disable filewalld
-sudo systemctl stop firewalld & systemctl disable firewalld
+## sudo systemctl stop firewalld & systemctl disable firewalld
+sudo ufw disable
+
 sudo modprobe br_netfilter
+
 # set IPv4 forward
 sudo echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
 sudo sysctl -w net.ipv4.ip_forward=1
