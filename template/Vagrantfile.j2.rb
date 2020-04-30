@@ -10,7 +10,9 @@ Vagrant.configure("2") do |config|
     master.vm.box = "{{ vmBox }}"
     master.vm.box_url = "{{ vmUrl }}"
     master.vm.hostname = "{{ vmHostname }}"
-    master.vm.network "public_network", ip: "{{ vmPubIP }}", bridge: "{{ vmBridge }}"
+    # to fix ping (DUP!) issue on 77 host, make the vm ip on 77 DHCP getted
+    # master.vm.network "public_network", ip: "{{ vmPubIP }}", bridge: "{{ vmBridge }}"
+    master.vm.network "public_network", bridge: "{{ vmBridge }}", use_dhcp_assigned_default_route: true
     master.vm.synced_folder "{{ vmSyncDirOnHost }}", "{{ vmSyncDirOnGuest }}"
     master.vm.provision "shell", inline: $setBaseEnv
   end
